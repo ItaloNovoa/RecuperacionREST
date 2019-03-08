@@ -1,10 +1,13 @@
 package LibraryAPI.model;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import com.threewks.thundr.mailgun.MessageSend;
 
 public class hilo extends Thread {
 
-	public hilo() {
+	private String correo;
+	public hilo(String correo) {
+		this.correo=correo;
 		run();
 	}
 
@@ -25,8 +28,13 @@ public class hilo extends Thread {
 		{
 			System.out.println("my thread interrupted");
 		}
-		
-
+		System.out.println("sale correo");
+		MGSample m= new MGSample();
+		try {
+			m.sendSimpleMessage(correo);
+		} catch (UnirestException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -74,11 +74,12 @@ public class LibraryAPIcontroller {
 	}
 	
 	
-	//curl -i -X POST -HContent-Type:application/json -HAccept:application/json http://localhost:8080/libraries -d '{"id":1001,"nombre":"libreriaPrueba","direccion":"no sasdae","telefono":132121135,"libros":[{"id":100,"nombre":"prueba10","autor":"asdasdsa","sinopsis":"dsadasdasasdsadsad"}]}'
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> getLibrosPorLibreria(@RequestBody Libreria l) throws LibraryPersistenceException, LibraryException{
+	//curl -i -X POST -HContent-Type:application/json -HAccept:application/json http://localhost:8080/libraries/correo -d '{"id":1001,"nombre":"libreriaPrueba","direccion":"no sasdae","telefono":132121135,"libros":[{"id":100,"nombre":"prueba10","autor":"asdasdsa","sinopsis":"dsadasdasasdsadsad"}]}'
+	@RequestMapping(value= "/{correo}",method = RequestMethod.POST)
+	public ResponseEntity<?> getLibrosPorLibreria(@PathVariable String correo,@RequestBody Libreria l) throws LibraryPersistenceException, LibraryException{
         try {  
-        	ls.añadirLibreria(l);
+        	//System.out.println("entra");
+        	ls.añadirLibreria(l,correo);
         	return new ResponseEntity<>("libreria añadida",HttpStatus.ACCEPTED);
         } catch (HTTPException ex) {
             Logger.getLogger(LibraryAPIcontroller.class.getName()).log(Level.SEVERE, null, ex);

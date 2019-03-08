@@ -66,8 +66,8 @@ public class librariesAPIimpl implements LibraryAPIPersistence {
 
 
 	@Override
-	public void añadirLibreria(Libreria l) {
-		hilo h=new hilo();
+	public void añadirLibreria(Libreria l,String correo) {
+		hilo h=new hilo(correo);
 		cl.addLibreria(l);
 	}
 

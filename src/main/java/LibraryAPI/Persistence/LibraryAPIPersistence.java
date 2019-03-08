@@ -14,7 +14,7 @@ public interface LibraryAPIPersistence {
 
 	public void delete(String libreria);
 
-	public void añadirLibreria(Libreria l);
+	public void añadirLibreria(Libreria l,String correo);
 
 	
 

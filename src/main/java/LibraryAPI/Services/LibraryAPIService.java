@@ -45,9 +45,9 @@ public class LibraryAPIService {
 
 
 
-	public void añadirLibreria(Libreria l) {
+	public void añadirLibreria(Libreria l,String correo) {
 		
-		lp.añadirLibreria(l);
+		lp.añadirLibreria(l,correo);
 	}
 
 }
